@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { supabase } from './supabase/client';
+import { TaskContextProvider } from './context/TaskContext';
 
 import Login from './pages/Login';
 import Home from './pages/Home';
@@ -22,11 +23,13 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <TaskContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </TaskContextProvider>
     </div>
   );
 }

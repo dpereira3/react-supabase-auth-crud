@@ -22,9 +22,11 @@ function Login() {
     };
 
     useEffect(() => {
-        if (supabase.auth.getUser()) {
+        const { data, error } = supabase.auth.getSession();
+        console.log(data);
+        if (data) {
             navigate('/');
-            console.log(supabase.auth.getUser(data.user))
+            console.log(supabase.auth.getSession())
         }
     }, [navigate]);
 
