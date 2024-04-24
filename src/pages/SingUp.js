@@ -2,9 +2,8 @@ import { useState } from "react";
 import { supabase } from '../supabase/client';
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import SignUp from "./SingUp";
 
-function Login() {
+function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState(''); // password of the user
 
@@ -14,7 +13,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            await supabase.auth.signInWithPassword({
+            await supabase.auth.signUp({
                 email,
                 password,
             });
@@ -36,7 +35,7 @@ function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                 type="email" 
@@ -51,10 +50,8 @@ function Login() {
                     Send
                 </button>
             </form>
-            <p>You don´t have account?</p>
-            <SignUp />
         </div>
     )
 }
 
-export default Login
+export default SignUp

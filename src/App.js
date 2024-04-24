@@ -5,6 +5,7 @@ import { supabase } from './supabase/client';
 import { TaskContextProvider } from './context/TaskContext';
 
 import Login from './pages/Login';
+import SignUp from './pages/SingUp';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 
@@ -26,6 +27,7 @@ function App() {
       <TaskContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
